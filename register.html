@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Create Account</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <div class="container">
+    <h1>Create Account</h1>
+    <p>Fill your information carefully</p>
+
+    <div class="input-group">
+      <label>Full Name</label>
+      <input id="fullName" type="text" placeholder="Your Name" />
+    </div>
+
+    <div class="grid-2">
+      <div class="input-group">
+        <label>Date of Birth</label>
+        <input id="dob" type="date" />
+      </div>
+
+      <div class="input-group">
+        <label>Blood Group</label>
+        <select id="bloodGroup">
+          <option id="blood" value="" disabled selected >Select Blood Group</option>
+          <option>A+</option>
+          <option>A-</option>
+          <option>B+</option>
+          <option>B-</option>
+          <option>AB+</option>
+          <option>AB-</option>
+          <option>O+</option>
+          <option>O-</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="input-group">
+      <label>Residence</label>
+      <input id="residence" type="text" placeholder="City / Address" />
+    </div>
+
+    <div class="grid-2">
+      <div class="input-group">
+        <label>Email</label>
+        <input id="regEmail" type="email" placeholder="example@gmail.com" />
+      </div>
+
+      <div class="input-group">
+        <label>Password</label>
+        <input id="regPassword" type="password" placeholder="Min 6 characters" />
+      </div>
+    </div>
+
+    <button class="btn btn-primary" onclick="register()">Create</button>
+    <button class="btn btn-secondary" onclick="goLogin()">Back to Login</button>
+
+    <div id="registerError" class="error"></div>
+    <div id="registerSuccess" class="success"></div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

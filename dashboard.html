@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dashboard</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <div class="container big-container">
+    <div class="topbar">
+      <div>
+        <h1>Student Dashboard</h1>
+        <p id="welcomeText">Welcome</p>
+      </div>
+      <div class="inline">
+        <span class="badge" id="sectionBadge">Section: --</span>
+        <button class="small-btn" onclick="goProfile()">Profile</button>
+        <button class="small-btn" onclick="logout()">Logout</button>
+      </div>
+    </div>
+
+    <div class="box">
+      <h2>Choose your Section</h2>
+      <p style="opacity:0.75">Select one section to show the subjects.</p>
+
+      <div class="section-buttons">
+        <div class="section-btn" onclick="selectSection('Scientific')">Scientific</div>
+        <div class="section-btn" onclick="selectSection('Literary')">Literary</div>
+        <div class="section-btn" onclick="selectSection('Vocational')">Vocational</div>
+      </div>
+
+      <div id="sectionMsg" class="success"></div>
+    </div>
+
+    <div class="box" style="margin-top:18px;">
+      <h2>Subjects & Grades (0 - 100)</h2>
+      <p style="opacity:0.75">Enter your grades then calculate your average.</p>
+
+      <div id="gradesGrid" class="grades-grid"></div>
+
+      <button class="btn btn-primary" onclick="calculateAverage()">Calculate Average</button>
+
+      <div id="avgBox" class="success" style="display:block; margin-top: 12px;">
+        Average: <b id="avgValue">--</b>
+      </div>
+
+      <div class="inline" style="margin-top:10px;">
+        <button class="small-btn" onclick="saveGrades()">Save Grades</button>
+        <button class="small-btn" onclick="loadGrades()">Load Saved Grades</button>
+        <button class="small-btn" onclick="printResult()">Print Result</button>
+      </div>
+    </div>
+
+    <div class="box" style="margin-top: 18px;">
+      <h2>Departments</h2>
+      <p style="opacity:0.75">Green = Available | Red = Locked</p>
+
+      <div id="departments" class="dep-grid"></div>
+    </div>
+
+    <div class="side">
+      <div class="box">
+        <h2>Selected Departments</h2>
+        <ul id="selectedList" class="list"></ul>
+      </div>
+
+      <div class="box">
+        <h2>Submit</h2>
+        <p style="opacity:0.75">Submit your choices to be reviewed by Admin.</p>
+
+        <button class="btn btn-primary" onclick="submitDepartments()">Submit</button>
+        <button class="btn btn-danger" onclick="clearSelections()">Clear Selections</button>
+
+        <div id="submitMsg" class="success"></div>
+      </div>
+    </div>
+
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

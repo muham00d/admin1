@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Forgot Password</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <div class="container">
+    <h1>Reset Password</h1>
+    <p>Enter your email and set a new password.</p>
+
+    <div class="input-group">
+      <label>Email</label>
+      <input id="fpEmail" type="email" placeholder="example@gmail.com" />
+    </div>
+
+    <div class="input-group">
+      <label>New Password</label>
+      <input id="fpPassword" type="password" placeholder="Min 6 characters" />
+    </div>
+
+    <button class="btn btn-primary" onclick="resetPassword()">Reset</button>
+    <button class="btn btn-secondary" onclick="goLogin()">Back to Login</button>
+
+    <div id="fpError" class="error"></div>
+    <div id="fpSuccess" class="success"></div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

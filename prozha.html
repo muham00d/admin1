@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Student Login</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <div class="container">
+    <h1>Student Login</h1>
+    <p>Login with your Email and Password</p>
+
+    <div class="input-group">
+      <label>Email</label>
+      <input id="loginEmail" type="email" placeholder="example@gmail.com" />
+    </div>
+
+    <div class="input-group">
+      <label>Password</label>
+      <input id="loginPassword" type="password" placeholder="********" />
+    </div>
+
+    <div class="checkbox">
+      <input type="checkbox" id="rememberMe">
+      <label for="rememberMe">Remember me</label>
+    </div>
+
+    <button class="btn btn-primary" onclick="login()">Login</button>
+    <button class="btn btn-secondary" onclick="goRegister()">Create Account</button>
+<center>
+    <div class="link">
+      <a href="forgot.html" >Forgot password?</a>
+    </div>
+
+    <hr>
+    <div style="margin-top:15px; text-align:center;">
+  <a href="admin.html" class="admin-link">Login as Admin</a>
+</div>
+</center>
+  
+
+    <div id="loginError" class="error"></div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
