@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Admin Login</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <div class="container">
+    <h1>Admin Login</h1>
+    <p>Login as Administrator</p>
+
+    <div class="input-group">
+      <label>Email</label>
+      <input id="adminEmail" type="email" placeholder="Admin Email" />
+    </div>
+
+    <div class="input-group">
+      <label>Password</label>
+      <input id="adminPassword" type="password" placeholder="Admin Password" />
+    </div>
+
+    <button class="btn btn-primary" onclick="adminLogin()">Login</button>
+    <button class="btn btn-secondary" onclick="goLogin()">Back to Student Login</button>
+
+    <div id="adminError" class="error"></div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

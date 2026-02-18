@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Admin Panel</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body class="admin-body" onload="loadAdminPanel && loadAdminPanel()">
+
+  <!-- Sidebar -->
+  <aside class="sidebar" id="sidebar">
+    <button class="sb-toggle" type="button" onclick="toggleSidebar()" title="Menu">☰</button>
+
+    <div class="sb-items">
+  <button class="sb-item active" type="button" onclick="showSection('sec_students', this)" title="Students">
+    <span class="sb-ico">📥</span>
+    <span class="sb-text">Students</span>
+  </button>
+
+  <button class="sb-item" type="button" onclick="showSection('sec_capacity', this)" title="Capacity">
+    <span class="sb-ico">✅</span>
+    <span class="sb-text">Capacity</span>
+  </button>
+
+  <button class="sb-item" type="button" onclick="showSection('sec_settings', this)" title="Settings">
+    <span class="sb-ico">⚙️</span>
+    <span class="sb-text">Settings</span>
+  </button>
+
+  <button class="sb-item" type="button" onclick="showSection('sec_history', this)" title="History">
+    <span class="sb-ico">🕘</span>
+    <span class="sb-text">History</span>
+  </button>
+
+  <button class="sb-item" type="button" onclick="showSection('sec_profile', this)" title="Admin Profile">
+    <span class="sb-ico">👤</span>
+    <span class="sb-text">Profile</span>
+  </button>
+</div>
+
+
+    <div class="sb-bottom">
+      <button class="sb-logout" type="button" onclick="adminLogout()">Logout</button>
+    </div>
+  </aside>
+
+  <!-- Main -->
+  <main class="admin-main" id="adminMain">
+
+    <!-- Students (MAIN default) -->
+    <section class="panel-section" id="sec_students">
+      <div class="container big-container">
+        <div class="topbar">
+          <div>
+            <h1>Admin Panel</h1>
+            <p>Manage Students, Approve or Reject requests.</p>
+          </div>
+
+          <div class="inline">
+            <span class="badge">Admin</span>
+          </div>
+        </div>
+
+        <div class="box">
+          <h2>Students Requests</h2>
+          <p style="opacity:0.75">You can approve or reject. Students data is saved in LocalStorage.</p>
+
+          <div style="overflow:auto; margin-top: 12px;">
+            <table class="table" id="studentsTable">
+        
+          <thead>
+           <tr>
+             <th>#</th>
+            <th>Name</th>
+      <th>Email</th>
+      <th>Section</th>
+      <th>Average</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody id="studentsTableBody"></tbody>
+</table>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Capacity -->
+    <section class="panel-section hidden" id="sec_capacity">
+      <div class="container big-container">
+        <div class="box">
+          <h2>Capacity</h2>
+          <p style="opacity:0.75">Edit departments capacity then Save.</p>
+
+          <div class="capacity-grid">
+            <div class="cap-box"><label>IT</label><input type="number" id="cap_IT" value="50" /></div>
+            <div class="cap-box"><label>CS</label><input type="number" id="cap_CS" value="50" /></div>
+            <div class="cap-box"><label>SE</label><input type="number" id="cap_SE" value="50" /></div>
+            <div class="cap-box"><label>Network</label><input type="number" id="cap_Network" value="50" /></div>
+            <div class="cap-box"><label>Database</label><input type="number" id="cap_Database" value="50" /></div>
+            <div class="cap-box"><label>Cyber</label><input type="number" id="cap_Cyber" value="50" /></div>
+            <div class="cap-box"><label>AI</label><input type="number" id="cap_AI" value="50" /></div>
+          </div>
+
+          <button class="btn btn-primary save-btn" onclick="saveCapacity()">💾 Save Capacity</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Settings -->
+    <section class="panel-section hidden" id="sec_settings">
+      <div class="container big-container">
+        <div class="box">
+          <h2>Settings</h2>
+          <p style="opacity:0.75">Lock registration + run allocation.</p>
+
+          <div class="actions-grid">
+            <button class="btn btn-primary" onclick="runAllocation()">⚡ Run Allocation</button>
+            <button class="btn btn-warning" onclick="lockRegistration()">🔒 Lock Registration</button>
+            <button class="btn btn-success" onclick="unlockRegistration()">🔓 Unlock Registration</button>
+          </div>
+
+          <div class="success" id="lockMsg"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- History -->
+    <section class="panel-section hidden" id="sec_history">
+      <div class="container big-container">
+        <div class="box">
+          <h2>History</h2>
+          <p style="opacity:0.75">Simple log of admin actions.</p>
+
+          <div class="box" style="margin-top:12px;">
+            <h3 style="margin-bottom:10px;">Logs</h3>
+            <div id="adminHistoryList" style="opacity:0.9">--</div>
+            <button class="btn btn-danger" style="margin-top:12px;" onclick="clearAdminHistory()">Clear History</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Admin Profile -->
+    <section class="panel-section hidden" id="sec_profile">
+      <div class="container big-container">
+        <div class="box">
+          <h2>Admin Profile</h2>
+          <p style="opacity:0.75">View and update admin credentials (local only).</p>
+
+          <div class="grid-2">
+            <div class="input-group">
+              <label>New Email</label>
+              <input id="newAdminEmail" type="email" placeholder="new email" />
+            </div>
+
+            <div class="input-group">
+              <label>New Password</label>
+              <input id="newAdminPassword" type="password" placeholder="new password" />
+            </div>
+          </div>
+
+          <button class="btn btn-primary" onclick="saveAdminCreds()">Save</button>
+
+          <div class="success" id="adminCredsOk"></div>
+          <div class="error" id="adminCredsErr"></div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
